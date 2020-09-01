@@ -10,8 +10,8 @@ const
     screenHeight = 450;
     ballSpeedMin = 6;
     ballSpeedMax = 16;
-    ballSize = 8;
-    barSpeed = 12;
+    ballSize : Single = 8;
+    barSpeed : Single = 12;
     barSize : TVector2 = (x: 8 ; y: 80);
 
 var
@@ -41,7 +41,7 @@ begin
             ball.y := screenHeight div 2;
             ballSpeed.x := -ballSpeedMin;
             ballSpeed.y := Randomrange(-ballSpeedMin, ballSpeedMin);
-            player := RectangleCreate(round(padding), round((screenHeight div 2) - (round(barSize.y) div 2)), round(barSize.x), round(barSize.y));
+            player := RectangleCreate(padding, Trunc(screenHeight / 2) - Trunc(barSize.y / 2), Trunc(barSize.x), Trunc(barSize.y));
         end;
         // game code
         if not pause then begin
@@ -54,9 +54,9 @@ begin
             if IsKeyDown(KEY_UP) then player.y := max(player.y - barSpeed, 0);
             if IsKeyDown(KEY_DOWN) then player.y := min(player.y + barSpeed, screenHeight - barSize.y);
             // ball move
-            if round(ball.x) < ballSize then reset := true; // game over
-            if round(ball.x) > (screenWidth - ballSize) then ballSpeed.x := max(ballSpeed.x * -1.1, -ballSpeedMax);
-            if (round(ball.y) < ballSize) or (round(ball.y) > (screenHeight - ballSize)) then ballSpeed.y := -ballSpeed.y;
+            if ball.x < ballSize then reset := true; // game over
+            if ball.x > (screenWidth - ballSize) then ballSpeed.x := max(ballSpeed.x * -1.1, -ballSpeedMax);
+            if (ball.y < ballSize) or (ball.y > (screenHeight - ballSize)) then ballSpeed.y := -ballSpeed.y;
             ball := Vector2Add(ball, ballSpeed);
         end;
         // rendering
