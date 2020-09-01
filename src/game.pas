@@ -40,7 +40,7 @@ begin
             ball.x := screenWidth div 2;
             ball.y := screenHeight div 2;
             ballSpeed.x := -ballSpeedMin;
-            ballSpeed.y := Randomrange(-ballSpeedMin, ballSpeedMin);
+            repeat ballSpeed.y := Randomrange(-ballSpeedMin, ballSpeedMin) until ballSpeed.x <> 0;
             player := RectangleCreate(padding, Trunc(screenHeight / 2) - Trunc(barSize.y / 2), Trunc(barSize.x), Trunc(barSize.y));
         end;
         // game code
