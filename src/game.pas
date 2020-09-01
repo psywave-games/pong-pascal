@@ -40,7 +40,7 @@ begin
             ball.x := screenWidth div 2;
             ball.y := screenHeight div 2;
             ballSpeed.x := -ballSpeedMin;
-            repeat ballSpeed.y := Randomrange(-ballSpeedMin, ballSpeedMin) until ballSpeed.x <> 0;
+            repeat ballSpeed.y := Randomrange(-ballSpeedMin, ballSpeedMin) until ballSpeed.y <> 0;
             player := RectangleCreate(padding, Trunc(screenHeight / 2) - Trunc(barSize.y / 2), Trunc(barSize.x), Trunc(barSize.y));
         end;
         // game code
@@ -49,6 +49,7 @@ begin
             if CheckCollisionCircleRec(ball, ballSize, player) then begin
                 score := score + 1;
                 ballSpeed.x := Abs(ballSpeed.x);
+                ballSpeed.y := Clamp(ballSpeed.y + Lerp(-ballSpeedMin, ballSpeedMin, (ball.y - player.y) / player.height), -ballSpeed.x, ballSpeed.x);
             end;
             // player move
             if IsKeyDown(KEY_UP) then player.y := max(player.y - barSpeed, 0);
