@@ -1,0 +1,22 @@
+# Trash
+tmp/*.o
+tmp/*.ppu
+tmp/*.a
+
+# Binary filles
+bin/
+
+# macos
+.DS_Store
+*.dylib
+
+# laz
+backup/
+lib/
+*.lps
+
+# GNU+Linux
+*.so
+
+# windows
+thumbs.db
