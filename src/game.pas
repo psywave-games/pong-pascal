@@ -48,7 +48,7 @@ begin
             // colision player&ball
             if CheckCollisionCircleRec(ball, ballSize, player) then begin
                 score := score + 1;
-                ballSpeed.x := -ballSpeed.x;
+                ballSpeed.x := Abs(ballSpeed.x);
             end;
             // player move
             if IsKeyDown(KEY_UP) then player.y := max(player.y - barSpeed, 0);
