@@ -1,4 +1,4 @@
-#/bin/bash
+#!/usr/bin/env bash
 LIBS=./libs
 BIN=./bin
 TMP=./tmp
@@ -6,6 +6,7 @@ RAYLIB=$BIN
 PASFILES=./src/*.pas
 STATIC=false
 DEBUG=
+
 
 if test -f "$1"; then
     PASFILES=$1
